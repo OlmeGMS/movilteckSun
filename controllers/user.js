@@ -165,6 +165,22 @@ var controller = {
 
         });
 
+    },
+
+    getUsers: function(req, res) {
+        User.find().exec((err, users) => {
+            if (err || !users) {
+                return res.status(404).send({
+                    success: false,
+                    message: 'No hay usuarios'
+                });
+            }
+
+            return res.status(200).send({
+                success: true,
+                users: users
+            });
+        });
     }
 
 };

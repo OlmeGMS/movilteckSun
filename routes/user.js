@@ -9,5 +9,6 @@ var md_auth = require('../middlewares/authenticated');
 // Rutas del usuario
 router.post('/register', UserController.save);
 router.post('/login', UserController.login);
+router.get('/users', md_auth.authenticated, UserController.getUsers);
 
 module.exports = router;
