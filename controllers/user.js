@@ -102,7 +102,7 @@ var controller = {
 
         // Validar datos 
         var validate_email = !validator.isEmpty(params.email) && validator.isEmail(params.email);
-        var validate_password = !validate_password.isEmpty(params.password);
+        var validate_password = !validator.isEmpty(params.password);
 
         if (!validate_email || !validate_password) {
             return res.status(200).send({
@@ -164,8 +164,6 @@ var controller = {
             // Devolver datos
 
         });
-
-        
 
     }
 
