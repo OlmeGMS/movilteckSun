@@ -7,5 +7,6 @@ var router = express.Router();
 
 // Rutas del usuario
 router.post('/register', UserController.save);
+router.post('/login', UserController.login);
 
 module.exports = router;
