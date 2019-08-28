@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5d6559b6b6c52e0b6aff09af" }, "name" : "Jhon", "surname" : "Doe", "email" : "admin@correo.com", "rol" : "Admin", "password" : "$2a$10$l2sx84HE3pVY5.khGmGywetZWh7WYmqEHH.GNAq/VDV72EBbFFft2", "__v" : 0 }
+{ "_id" : { "$oid" : "5d655a67a1a1d20b7b89a69f" }, "name" : "Joe", "surname" : "Doe", "email" : "comercial@correo.com", "rol" : "Comercial", "password" : "$2a$10$Rd1j2Q.pbMArucb5HAnHIeYAWhJ2l45lIqJx1lXi2FVi4FMM79ide", "__v" : 0 }
