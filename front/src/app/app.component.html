@@ -1,20 +1,244 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div *ngIf="!identity" class="">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-5 col-md-offset-1">
+              <div id="login-alt-container">
+                  <!-- Title -->
+                  <h1 class="push-top-bottom">
+                      <i class="fa fa-code"></i>&nbsp;<strong>Moviltecksun</strong><br>
+                      <small>Bienvenidos al administrador!</small>
+                  </h1>
+                  <!-- END Title -->
 
+                  <!-- Key Features -->
+                  <ul class="fa-ul text-muted">
+                      <li><i class="fa fa-check fa-li text-success"></i> limpio &amp; Diseño moderno</li>
+                      <li><i class="fa fa-check fa-li text-success"></i> Full Responsive &amp; Retina Ready</li>
+                      <li><i class="fa fa-check fa-li text-success"></i> Miles de estilos</li>
+                      <li><i class="fa fa-check fa-li text-success"></i> Diseño a la medida</li>
+                      <li><i class="fa fa-check fa-li text-success"></i> Experiencia unica</li>
+                  </ul>
+                  <!-- END Key Features -->
+
+                  <!-- Footer -->
+                  <footer class="text-muted push-top-bottom">
+                      <small><span id="year-copy"></span> &copy; <a href="#" target="_blank">Moviltecksun</a></small>
+                  </footer>
+                  <!-- END Footer -->
+              </div>
+          </div>
+          <div class="col-md-5">
+              <!-- Login container -->
+              <div id="login-container">
+                  <!-- Login Title -->
+                  <div class="login-title text-center">
+                      <h1><strong>Login</strong> o <strong>Registro</strong></h1>
+                  </div>
+                  <!-- END Login Title -->
+
+                  <!-- Login Block -->
+                  <div class="block push-bit">
+                        <div class="alert alert-info" *ngIf="errorMessage">
+                            <strong>Atención!</strong> {{errorMessage}}
+                        </div>
+                      <!-- Login Form -->
+                      <form #loginForm="ngForm" method="post" id="form-login" class="form-horizontal" (ngSubmit)="onSubmit()">
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                      <input type="text" #correo="ngModel" id="login-email" name="login-email" class="form-control input-lg" placeholder="Email" [(ngModel)]="user.email" required>
+                                      <span *ngIf="!user.email.valid && user.email.touched">El email es obligatorio</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                      <input type="password" #password="ngModel" id="login-password" name="login-password" class="form-control input-lg" placeholder="Password" [(ngModel)]="user.password" required>
+                                      <span *ngIf="!user.password.valid && user.password.touched">El password es obligatorio</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group form-actions">
+                              <div class="col-xs-4">
+                                  <label class="switch switch-primary" data-toggle="tooltip" title="Recordarme?">
+                                          <input type="checkbox" id="login-remember-me" name="login-remember-me" checked>
+                                          <span></span>
+                                      </label>
+                              </div>
+                              <div class="col-xs-8 text-right">
+                                  <button type="submit" class="btn btn-sm btn-primary" [disabled]="user.email.length < 0 && user.password.length < 0"><i class="fa fa-angle-right"></i> Ingresar</button>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12 text-center">
+                                  <a href="javascript:void(0)" id="link-reminder-login"><small>Olevido su clave?</small></a> -
+                                  <a href="javascript:void(0)" id="link-register-login"><small>Crear una nueva cuenta</small></a>
+                              </div>
+                          </div>
+                      </form>
+                      <!-- END Login Form -->
+
+                      <!-- Reminder Form -->
+                      <form action="login_alt.html#reminder" method="post" id="form-reminder" class="form-horizontal display-none">
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                      <input type="text" id="reminder-email" name="reminder-email" class="form-control input-lg" placeholder="Email">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group form-actions">
+                              <div class="col-xs-12 text-right">
+                                  <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Reset Password</button>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12 text-center">
+                                  <small>Did you remember your password?</small> <a href="javascript:void(0)" id="link-reminder"><small>Login</small></a>
+                              </div>
+                          </div>
+                      </form>
+                      <!-- END Reminder Form -->
+
+                      <!-- Register Form -->
+                      <form action="login_alt.html#register" method="post" id="form-register" class="form-horizontal display-none">
+                          <div class="form-group">
+                              <div class="col-xs-6">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-user"></i></span>
+                                      <input type="text" id="register-firstname" name="register-firstname" class="form-control input-lg" placeholder="Firstname">
+                                  </div>
+                              </div>
+                              <div class="col-xs-6">
+                                  <input type="text" id="register-lastname" name="register-lastname" class="form-control input-lg" placeholder="Lastname">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                      <input type="text" id="register-email" name="register-email" class="form-control input-lg" placeholder="Email">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                      <input type="password" id="register-password" name="register-password" class="form-control input-lg" placeholder="Password">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                      <input type="password" id="register-password-verify" name="register-password-verify" class="form-control input-lg" placeholder="Verify Password">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group form-actions">
+                              <div class="col-xs-6">
+                                  <a href="#modal-terms" data-toggle="modal" class="register-terms">Terms</a>
+                                  <label class="switch switch-primary" data-toggle="tooltip" title="Agree to the terms">
+                                          <input type="checkbox" id="register-terms" name="register-terms">
+                                          <span></span>
+                                      </label>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Register Account</button>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-xs-12 text-center">
+                                  <small>Do you have an account?</small> <a href="javascript:void(0)" id="link-register"><small>Login</small></a>
+                              </div>
+                          </div>
+                      </form>
+                      <!-- END Register Form -->
+                  </div>
+                  <!-- END Login Block -->
+              </div>
+              <!-- END Login container -->
+          </div>
+      </div>
+  </div>
+  <!-- END Login Alternative Row -->
+
+  <!-- Modal Terms -->
+  <div id="modal-terms" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Terms &amp; Conditions</h4>
+              </div>
+              <div class="modal-body">
+                  <h4>Title</h4>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h4>Title</h4>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h4>Title</h4>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p>Donec lacinia venenatis metus at bibendum? In hac habitasse platea dictumst. Proin ac nibh rutrum lectus rhoncus eleifend. Sed porttitor pretium venenatis. Suspendisse potenti. Aliquam quis ligula elit. Aliquam at orci ac neque semper
+                      dictum. Sed tincidunt scelerisque ligula, et facilisis nulla hendrerit non. Suspendisse potenti. Pellentesque non accumsan orci. Praesent at lacinia dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- END Modal Terms -->
+</div>
+<div *ngIf="identity">
+  <div id="page-wrapper">
+      <div class="preloader themed-background">
+          <h1 class="push-top-bottom text-light text-center"><strong>Moviltecksun</strong></h1>
+          <div class="inner">
+              <h3 class="text-light visible-lt-ie9 visible-lt-ie10"><strong>Loading..</strong></h3>
+              <div class="preloader-spinner hidden-lt-ie9 hidden-lt-ie10"></div>
+          </div>
+      </div>
+
+      <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
+          <app-sidebar></app-sidebar>
+          <!-- Main Container -->
+          <div id="main-container">
+              <app-header></app-header>
+              <!-- Preloader -->
+              <!-- Page content -->
+              <div id="page-content">
+                  <router-outlet></router-outlet>
+              </div>
+              <!-- END Page Content -->
+
+              <!-- END Page Content -->
+              <!-- Footer -->
+              <footer class="clearfix">
+                  <div class="pull-right">
+                      Creado <i class="fa fa-desktop success"></i> por <a href="#" target="_blank">Moviltecksun</a>
+                  </div>
+                  <div class="pull-left">
+                      <span>2019</span> &copy; <a href="#" target="_blank">Moviltecksun</a>
+                  </div>
+              </footer>
+              <!-- END Footer -->
+
+
+          </div>
+          <!-- END Main Container -->
+      </div>
+      <!-- END Page Container -->
+  </div>
+  <!-- END Page Wrapper -->
+
+</div>

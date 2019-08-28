@@ -5,6 +5,6 @@ export class User {
         public surname: string,
         public email: string,
         public password: string,
-        public rol: string 
-    ){}
+        public rol: string
+    ) {}
 }

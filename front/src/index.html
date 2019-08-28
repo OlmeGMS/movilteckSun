@@ -1,14 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Front</title>
+  <title>Moviltecksun</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Bootstrap is included in its original form, unaltered -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+  <!-- Related styles of various icon packs and plugins -->
+  <link rel="stylesheet" href="assets/css/plugins.css">
+  
+  <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+  
+  <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+  <link rel="stylesheet" href="assets/css/themes.css">
+  <!-- END Stylesheets -->
+  
+  <!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
+  <script src="assets/js/vendor/modernizr-respond.min.js"></script>
 </head>
 <body>
   <app-root></app-root>
+  <!-- Include Jquery library from Google's CDN but if something goes wrong get Jquery from local file -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    !window.jQuery && document.write(decodeURI('%3Cscript src="assets/js/vendor/jquery-1.11.2.min.js"%3E%3C/script%3E'));
+</script>
+
+<!-- Bootstrap.js, Jquery plugins and Custom JS code -->
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/app.js"></script>
+
+<!-- Load and execute javascript code used only in this page -->
+<script src="assets/js/pages/login.js"></script>
+<script>
+    $(function() {
+        Login.init();
+    });
+</script>
+<!-- Load and execute javascript code used only in this page -->
+<script src="assets/js/pages/index.js"></script>
+<script>$(function(){ Index.init(); });</script>
+<script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
 </body>
 </html>

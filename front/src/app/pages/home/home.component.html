@@ -1,0 +1,121 @@
+<!-- Dashboard Header -->
+<!-- For an image header add the class 'content-header-media' and an image as in the following example -->
+<div class="content-header content-header-media">
+    <div class="header-section">
+        <div class="row">
+            <!-- Main Title (hidden on small devices for the statistics to fit) -->
+            <div class="col-md-4 col-lg-6 hidden-xs hidden-sm">
+                <h1>Bienvenido <strong>Admin</strong><br><small>Manos a la obra!</small></h1>
+            </div>
+            <!-- END Main Title -->
+
+            <!-- Top Stats -->
+            <div class="col-md-8 col-lg-6">
+                <div class="row text-center">
+                    <div class="col-xs-4 col-sm-3">
+                        <!--<h2 class="animation-hatch">
+                            $<strong>93.7k</strong><br>
+                            <small><i class="fa fa-thumbs-o-up"></i> Great</small>
+                        </h2>-->
+                    </div>
+                    <div class="col-xs-4 col-sm-3">
+                        <!--<h2 class="animation-hatch">
+                            <strong>167k</strong><br>
+                            <small><i class="fa fa-heart-o"></i> Likes</small>
+                        </h2>-->
+                    </div>
+                    <div class="col-xs-4 col-sm-3">
+                        <!--<h2 class="animation-hatch">
+                            <strong>101</strong><br>
+                            <small><i class="fa fa-calendar-o"></i> Events</small>
+                        </h2>-->
+                    </div>
+                    <!-- We hide the last stat to fit the other 3 on small devices -->
+                    <div class="col-sm-3 hidden-xs">
+                        <h2 class="animation-hatch">
+                            <strong>17&deg; C</strong><br>
+                            <small><i class="fa fa-map-marker"></i> Bogotá</small>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- END Top Stats -->
+        </div>
+    </div>
+    <!-- For best results use an image with a resolution of 2560x248 pixels (You can also use a blurred image with ratio 10:1 - eg: 1000x100 pixels - it will adjust and look great!) -->
+    <img src="assets/img/placeholders/headers/lock_header.jpg" alt="header image" class="animation-pulseSlow">
+</div>
+<!-- END Dashboard Header -->
+<div class="" *ngIf="identity">
+
+        <!-- Blank Header -->
+        <div class="content-header">
+            <div class="header-section">
+                <h1>
+                    <i class="gi gi-money"></i>{{titulo}}<br><small>Aquí podras seleccionar la divisa!</small>
+                </h1>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+            <li>Home</li>
+            <li>Divisa</li>
+            <li><a href="">{{titulo}}</a></li>
+        </ul>
+        <!-- END Blank Header -->
+      
+        <!-- Example Block -->
+        <div class="block">
+            <!-- Example Title -->
+            <div class="block-title">
+                <h2>{{titulo}}</h2>
+            </div>
+            <!-- END Example Title -->
+      
+            <!-- Example Content -->
+            <form id="form-validation"  #divisaForm="ngForm" method="post" class="form-horizontal form-bordered" (ngSubmit)="onSubmit()">
+                <fieldset>
+                  <legend><i class="fa fa-angle-right"></i> Datos de la divisa</legend>
+                  <div *ngIf="alertMessage">
+                      <div class="alert alert-info">
+                        {{alertMessage}}
+                      </div>
+                  </div>
+        
+                <div class="form-group" *ngIf="identity.rol == 'Admin'">
+                        <label class="col-md-4 control-label" for="divisa">Divisa</label>
+                        <div class="col-md-6">
+                          <select  class="form-control" id="divisa" #moneda="ngModel" name="divisa" [(ngModel)]="divisa" placeholder="Seleccione la divisa"required>
+                            <option value="" selected disabled>Seleccione la divisa</option>
+                            <option value="Dolares">Dolar</option>
+                            <option value="Euros">Euro</option>
+                            <option value="Won">Won</option>
+                          </select>
+                        </div>
+                </div>
+
+                <div class="form-group" *ngIf="identity.rol == 'Comercial'">
+                        <label class="col-md-4 control-label" for="divisa">Divisa</label>
+                        <div class="col-md-6">
+                          <select  class="form-control" id="divisa" #moneda="ngModel" name="divisa" [(ngModel)]="divisa" placeholder="Seleccione la divisa"required>
+                            <option value="" selected disabled>Seleccione la divisa</option>
+                            <option value="Euros">Euro</option>
+                            <option value="Won">Won</option>
+                          </select>
+                        </div>
+                </div>
+
+                  <div class="form-group ">
+                    <div class="col-md-8 col-md-offset-4">
+                      <button href="" type="submit" class="btn btn-sm btn-success"><i class="fa fa-arrow-right"></i> Guardar</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            <!-- END Example Content -->
+        </div>
+        <!-- END Example Block -->
+      
+      
+      </div>
+      
+
