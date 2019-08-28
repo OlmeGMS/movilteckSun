@@ -9,6 +9,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TablesComponent } from './pages/tables/tables.component';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TablesComponent } from './pages/tables/tables.component';
     HeaderComponent,
     SidebarComponent,
     HomeComponent,
-    TablesComponent
+    TablesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

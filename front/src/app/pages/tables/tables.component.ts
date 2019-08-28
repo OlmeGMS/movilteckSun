@@ -83,7 +83,6 @@ export class TablesComponent implements OnInit {
           this.total = this.cableado + this.sellamiento + this.mano + this.fibra + this.deco;
           break;
 
-      
         default:
           break;
       }

@@ -1,0 +1,54 @@
+<div class="" *ngIf="identity">
+
+        <!-- Blank Header -->
+        <div class="content-header">
+            <div class="header-section">
+                <h1>
+                    <i class="fa fa-list-ol"></i>{{titulo}}<br><small>En esta sección pudes ver los usuarios registrados!</small>
+                </h1>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+            <li>Home</li>
+            <li>usuarios</li>
+            <li><a href="">{{titulo}}</a></li>
+        </ul>
+        <!-- END Blank Header -->
+      
+        <!-- Example Block -->
+        <div class="block">
+            <!-- Example Title -->
+            <div class="block-title">
+                <h2>{{titulo}}</h2>
+            </div>
+            <!-- END Example Title -->
+              <div class="table-responsive remove-margin-bottom">
+                <table id="table-usuarios-app" class="table table-vcenter table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Apellido</th>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td class="text-center">{{user._id}}</td>
+                            <td class="text-center">{{user.name}}</td>
+                            <td class="text-center">{{user.surname}}</td>
+                            <td class="text-center">{{user.email}}</td>
+                            <td class="text-center">{{user.rol}}</td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+            <!-- Example Content -->
+      
+            <!-- END Example Content -->
+        </div>
+        <!-- END Example Block -->
+      
+      </div>
